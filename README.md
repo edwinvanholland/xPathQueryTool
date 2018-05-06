@@ -1,5 +1,5 @@
 # xPathQueryTool
-By Edwin van Holland (@edwinvanholland)
+By Edwin van Holland ([@edwinvanholland](https://twitter.com/edwinvanholland "@edwinvanholland"))
 
 ## Summary
 xPathQueryTool is a simple tool for testing short snippets of XSL. Just load up a piece of XML, generate your base xsl template and you're good to go. The build-in XML treeview lets you select a node and quickly retrieve it's xpath.
