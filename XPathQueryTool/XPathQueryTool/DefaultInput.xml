@@ -1,4 +1,4 @@
-﻿<ns0:Foo xmlns:ns0="http://boltrics.nl/edi/1/materialmasterdata:v1.00" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MyScript="http://schemas.microsoft.com/BizTalk/2003/MyScript">
+﻿<ns0:Message xmlns:ns0="http://boltrics.nl/edi/1/materialmasterdata:v1.00" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MyScript="http://schemas.microsoft.com/BizTalk/2003/MyScript">
   <ns0:Header>
     <ns0:MessageID>{2cc9a008-74fe-48e0-a0bd-0e269a540b05}</ns0:MessageID>
     <ns0:CreationDateTime>2018-04-11T06:47:29</ns0:CreationDateTime>
@@ -62,4 +62,4 @@
       </ns0:LocationContents>
     </ns0:CustomerItem>
   </ns0:CustomerItems>
-</ns0:Foo>
+</ns0:Message>
