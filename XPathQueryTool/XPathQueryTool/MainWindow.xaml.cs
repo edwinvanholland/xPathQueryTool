@@ -96,10 +96,17 @@ namespace XPathQueryTool
                 string ns0 = rxNs0.Match(txtXml.Text).Groups[1].Value;
                 string templateStart = string.Format(xslStart, ns0);
 
+                string rootNode = "Message";
+                try
+                {
+                    rootNode = XDocument.Parse(txtXml.Text).Root.Name.LocalName;
+                }
+                catch { }
+
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine(templateStart);
                 sb.AppendLine("");
-                sb.AppendLine("<xsl:value-of select='/s0:Message' />");
+                sb.AppendLine($"<xsl:value-of select='/s0:{rootNode}' />");
                 sb.AppendLine("");
                 sb.Append(xslEnd);
 
@@ -129,10 +136,29 @@ namespace XPathQueryTool
             }
         }
 
+        private string GenerateNodeTooltip(XElement element) {
+            // If no child elements, show the value. Else show the attributes
+            StringBuilder sb = new StringBuilder();
+            foreach (var attr in element.Attributes())
+            {
+                sb.AppendLine($"{attr.Name}:\t{attr.Value}");
+            }
+            if (!element.HasElements && !string.IsNullOrEmpty(element.Value))
+            {
+                sb.AppendLine($"Value:\t{element.Value}");
+
+            }
+            if (sb.Length > 0)
+            {
+                return sb.ToString().Trim();
+            }
+            return "";
+        }
+
         private TreeViewItem AddNodeToTreeView(XElement element, TreeViewItem parent)
         {
             TreeViewItem leaf = new TreeViewItem() { Header = element.Name.LocalName, IsExpanded=true };
-            leaf.ToolTip = element.Value;
+            leaf.ToolTip = GenerateNodeTooltip(element);
 
             if (parent == null)
             {
@@ -193,6 +219,7 @@ namespace XPathQueryTool
         private void txtXml_TextChanged(object sender, TextChangedEventArgs e)
         {
             ReloadTree_Click(this, e);
+            ExecuteXsl_Click(this, null);
         }
     }
 }

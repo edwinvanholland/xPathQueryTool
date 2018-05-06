@@ -30,7 +30,7 @@
         <TabControl Grid.Row="1" Grid.Column="0">
             <TabItem Header="Xml">
                 <Grid Background="#FFE5E5E5">
-                    <TextBox Name="txtXml" TextChanged="txtXml_TextChanged"/>
+                    <TextBox Name="txtXml" TextChanged="txtXml_TextChanged" AcceptsReturn="True" AcceptsTab="True" AutoWordSelection="True"/>
                 </Grid>
             </TabItem>
             <TabItem Header="TreeView">
@@ -48,7 +48,7 @@
         </TabControl>
         
         <!-- XSL Panel -->
-        <TextBox  Name="txtXPathQuery" Grid.Column="1" Grid.Row="1" TextChanged="txtXPathQuery_TextChanged">
+        <TextBox  Name="txtXPathQuery" Grid.Column="1" Grid.Row="1" TextChanged="txtXPathQuery_TextChanged" AcceptsReturn="True" AcceptsTab="True" AutoWordSelection="True">
             <TextBox.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="(Re)generate Xsl template from XML" Click="GenerateXsl_Click"/>
@@ -57,7 +57,7 @@
         </TextBox>
 
         <!-- Result Pane -->
-        <TextBox Name="txtResult" Grid.Column="2" Grid.Row="1" TextWrapping="Wrap">
+        <TextBox Name="txtResult" Grid.Column="2" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" AutoWordSelection="True">
         </TextBox>
         
         <!-- Buttons -->
