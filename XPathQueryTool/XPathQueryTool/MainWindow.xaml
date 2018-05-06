@@ -1,0 +1,73 @@
+﻿<Window x:Class="XPathQueryTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XPathQueryTool"
+        mc:Ignorable="d"
+        Title="XPath Query Tool" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Column Header Labels -->
+        <Label Content="Step 1: Collect the XML" Margin="5,5,0,0" Grid.Column="0" />
+        <Label Content="Step 2: ..." Margin="5,5,0,0" Grid.Column="1" />
+        <Label Content="Step 3: Profit!" Margin="5,5,0,0" Grid.Column="2"/>
+  
+
+        <!-- XML Panel -->
+        <TabControl Grid.Row="1" Grid.Column="0">
+            <TabItem Header="Xml">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox Name="txtXml" TextChanged="txtXml_TextChanged"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="TreeView">
+                <Grid Background="#FFE5E5E5">
+                    <TreeView Name="tvXmlTree">
+                        <TreeView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy XPath" Name="tvcmCopyPath" Click="ContextMenuCopyPath_Click"/>
+                                <MenuItem Header="Reload TreeView" Name="tvcmReloadTreeView" Click="ContextMenuReloadTreeView_Click"/>
+                            </ContextMenu>
+                        </TreeView.ContextMenu>
+                    </TreeView>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        
+        <!-- XSL Panel -->
+        <TextBox  Name="txtXPathQuery" Grid.Column="1" Grid.Row="1" TextChanged="txtXPathQuery_TextChanged">
+            <TextBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="(Re)generate Xsl template from XML" Click="GenerateXsl_Click"/>
+                </ContextMenu>
+            </TextBox.ContextMenu>
+        </TextBox>
+
+        <!-- Result Pane -->
+        <TextBox Name="txtResult" Grid.Column="2" Grid.Row="1" TextWrapping="Wrap">
+        </TextBox>
+        
+        <!-- Buttons -->
+        <Button Grid.Row="2" Grid.Column="0" Name="btnReloadTree" Click="ReloadTree_Click" Visibility="Hidden">Reload Tree</Button>
+        <Button Grid.Row="2" Grid.Column="1" Name="btnLoad" Click="GenerateXsl_Click" Visibility="Hidden">Generate</Button>
+        <Button Grid.Row="2" Grid.Column="2" Name="btnExecute" Click="ExecuteXsl_Click" Visibility="Hidden">Execute</Button>
+        
+        <!-- Status Bar -->
+        <StatusBar Grid.Row="3" Grid.ColumnSpan="3" Name="statusBar">
+            <Label Name="statusStripLabel" Content="Ready" FontSize="9"/>
+        </StatusBar>
+    </Grid>
+</Window>

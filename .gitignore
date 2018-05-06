@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/XPathQueryTool/XPathQueryTool/bin/Debug
+/XPathQueryTool/XPathQueryTool/obj/Debug
+/XPathQueryTool/.vs/XPathQueryTool/v15
